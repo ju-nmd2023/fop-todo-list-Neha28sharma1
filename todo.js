@@ -10,15 +10,18 @@ function clickHandler() {
   }
 }
 
-function updateListitem(value, createButtons) {
+function updateListitem(value) {
   const listElement = document.getElementById("list"); /// called ul
-  const listitemElement = document.createElement("li"); // created li in ul
-  listitemElement.innerText = value;
+
+  const listitemElement = document.createElement("div"); // created li in ul
+  const itemElement = document.createElement("p"); // created li in ul
+  itemElement.innerText = value;
+  listitemElement.appendChild(itemElement);
   listitemElement.classList.add("item"); // li class
   listElement.appendChild(listitemElement); //  adding li as ul child
-  if (createButtons) {
-    createButton(listitemElement);
-  }
+  // if (createButtons) {
+  //   createButton(listitemElement);
+  // }
   createButton(listitemElement);
 }
 
@@ -71,15 +74,17 @@ function saveListInformationLocal(value) {
 
 function saveElementsOnRefresh() {
   const listElement = document.getElementById("list");
-  listElement.innerHTML = "";
+  // listElement.innerHTML = "";
 
   if (localStorage.inputElement !== undefined) {
     let inputElementsArray = JSON.parse(localStorage.inputElement);
 
     for (let inputelement of inputElementsArray) {
-      const listitemElement = document.createElement("li"); // created li in ul
-      listitemElement.innerText = inputelement.name;
+      const listitemElement = document.createElement("div"); // created li in ul
+      const itemElement = document.createElement("div"); // created li in ul
+      itemElement.innerText = inputelement.name;
       listitemElement.classList.add("item");
+      listitemElement.appendChild(itemElement);
       listElement.appendChild(listitemElement);
       createButton(listitemElement);
     }
@@ -96,39 +101,52 @@ function removeElement() {
 function finishedTask() {
   ///// there is problem with this
   const element = this; // Get the clicked button
-  const listItem = element.parentNode;
-  listItem.classList.toggle("completed"); // Toggle the completed class on the li element
+  const doneTaskValue = element.parentNode.childNodes[0].innerText; // we called the child at index o with innertext so that it doesnt take strings
+  // listItem.classList.toggle("completed"); // Toggle the completed class on the li element
+  const inputElementsArray = JSON.parse(localStorage.inputElement);
 
+  const inputIndex = inputElementsArray.findIndex(function (event) {
+    return event.name === doneTaskValue;
+  });
+  if (inputIndex !== -1) {
+    inputElementsArray[inputIndex].completed = true;
+  }
+  // for (let element of inputElementsArray) {
+  //   console.log(element.name);
+  //   if (element.name === listItem.name) {
+  //   }
+  // }
   // Update the completed status in local storage
   updateLocalStorage();
 
   // Update the button text
   if (element.completed === "false") {
     element.innerText = "🤍";
-    element.completed = "true";
+    // element.completed = "true";
   } else {
     element.innerText = "❤️";
-    element.completed = "false";
+    // element.completed = true;
   }
 }
 function updateLocalStorage() {
+  console.log(this);
   // listElement.innerHTML = "";
   //   const listItems = listElement.querySelectorAll(".item");
-  const listItems = document.getElementsByClassName("item");
-  //   listItems.innerHTML = "";
-  let inputElementsArray = [];
-
-  for (let i = 0; i < listItems.length; i++) {
-    const item = listItems[i];
-    inputElementsArray.push({
-      name: item.innerText,
-      completed: item.classList.contains("completed"),
-    });
-  }
-
+  // const listItems = document.getElementsByClassName("item");
+  // listItems.innerHTML = "";
+  // let inputElementsArray = [];
+  // for (let i = 0; i < listItems.length; i++) {
+  //   const item = listItems[i];
+  //   console.log(item);
+  //   inputElementsArray.push(item);
+  //   inputElementsArray.push({
+  //     name: item.innerText,
+  //     completed: item.classList.contains("completed"),
+  //   });
+  // }
   //   inputElementsArray = JSON.parse(localStorage.inputElement); ///  TO CONVERT TO OBJECT
   //   inputElementsArray.push(inputElement); // adds new value to array
-  localStorage.setItem("inputElement", JSON.stringify(inputElementsArray));
+  // localStorage.setItem("inputElement", JSON.stringify(inputElementsArray));
 }
 
 function onLoadHandler() {
