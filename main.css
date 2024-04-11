@@ -1,8 +1,8 @@
 html,
 body {
-  margin: 0px;
+  margin: 15px;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: antiquewhite;
+  background-color: #4f4c4c;
 }
 
 #addButton {
@@ -56,8 +56,14 @@ h1 {
 #list {
   text-align: center;
   justify-content: center;
+  background-color: grey;
+  border: 2px solid #ccc;
 }
 
+.delete,
+.done {
+  margin-right: 20px; /* Adjust the margin as needed */
+}
 .item {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
