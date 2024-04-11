@@ -74,7 +74,7 @@ function saveListInformationLocal(value) {
 
 function saveElementsOnRefresh() {
   const listElement = document.getElementById("list");
-  // listElement.innerHTML = "";
+  listElement.innerHTML = "";
 
   if (localStorage.inputElement !== undefined) {
     let inputElementsArray = JSON.parse(localStorage.inputElement);
@@ -95,7 +95,7 @@ function removeElement() {
   // to remove the task inspired by Garrit fruit chart
   const element = this.parentNode;
   element.parentNode.removeChild(element);
-  updateLocalStorage();
+  // localStorage.setItem("inputElement", JSON.stringify(inputElementsArray));
 }
 
 function finishedTask() {
@@ -110,6 +110,7 @@ function finishedTask() {
   });
   if (inputIndex !== -1) {
     inputElementsArray[inputIndex].completed = true;
+    localStorage.setItem("inputElement", JSON.stringify(inputElementsArray));
   }
   // for (let element of inputElementsArray) {
   //   console.log(element.name);
@@ -117,7 +118,6 @@ function finishedTask() {
   //   }
   // }
   // Update the completed status in local storage
-  updateLocalStorage();
 
   // Update the button text
   if (element.completed === "false") {
@@ -130,23 +130,23 @@ function finishedTask() {
 }
 function updateLocalStorage() {
   console.log(this);
-  // listElement.innerHTML = "";
-  //   const listItems = listElement.querySelectorAll(".item");
-  // const listItems = document.getElementsByClassName("item");
-  // listItems.innerHTML = "";
-  // let inputElementsArray = [];
-  // for (let i = 0; i < listItems.length; i++) {
-  //   const item = listItems[i];
-  //   console.log(item);
-  //   inputElementsArray.push(item);
-  //   inputElementsArray.push({
-  //     name: item.innerText,
-  //     completed: item.classList.contains("completed"),
-  //   });
-  // }
-  //   inputElementsArray = JSON.parse(localStorage.inputElement); ///  TO CONVERT TO OBJECT
-  //   inputElementsArray.push(inputElement); // adds new value to array
-  // localStorage.setItem("inputElement", JSON.stringify(inputElementsArray));
+  listElement.innerHTML = "";
+  const listItems = listElement.querySelectorAll(".item");
+  const listItems = document.getElementsByClassName("item");
+  listItems.innerHTML = "";
+  let inputElementsArray = [];
+  for (let i = 0; i < listItems.length; i++) {
+    const item = listItems[i];
+    console.log(item);
+    inputElementsArray.push(item);
+    inputElementsArray.push({
+      name: item.innerText,
+      completed: item.classList.contains("completed"),
+    });
+  }
+  inputElementsArray = JSON.parse(localStorage.inputElement); ///  TO CONVERT TO OBJECT
+  inputElementsArray.push(inputElement); // adds new value to array
+  localStorage.setItem("inputElement", JSON.stringify(inputElementsArray));
 }
 
 function onLoadHandler() {
