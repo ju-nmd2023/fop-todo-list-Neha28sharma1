@@ -13,15 +13,12 @@ function clickHandler() {
 function updateListitem(value) {
   const listElement = document.getElementById("list"); /// called ul
 
-  const listitemElement = document.createElement("div"); // created li in ul
+  const listitemElement = document.createElement("li"); // created li in ul
   const itemElement = document.createElement("p"); // created li in ul
   itemElement.innerText = value;
   listitemElement.appendChild(itemElement);
   listitemElement.classList.add("item"); // li class
   listElement.appendChild(listitemElement); //  adding li as ul child
-  // if (createButtons) {
-  //   createButton(listitemElement);
-  // }
   createButton(listitemElement);
 }
 
@@ -75,8 +72,8 @@ function displayFromLocalstorage() {
     let inputElementsArray = JSON.parse(localStorage.inputElement);
 
     for (let inputelement of inputElementsArray) {
-      const listitemElement = document.createElement("div"); // created li in ul
-      const itemElement = document.createElement("div"); // created li in ul
+      const listitemElement = document.createElement("li"); // created li in ul
+      const itemElement = document.createElement("p"); // created li in ul
       itemElement.innerText = inputelement.name;
       listitemElement.classList.add("item");
       if (inputelement.completed) {
