@@ -1,5 +1,3 @@
-// let completed = true;
-
 function clickHandler() {
   const inputElement = document.getElementById("enterText"); ///called input element
   const value = inputElement.value; //input element value
@@ -14,7 +12,7 @@ function updateListitem(value) {
   const listElement = document.getElementById("list"); /// called ul
 
   const listitemElement = document.createElement("li"); // created li in ul
-  const itemElement = document.createElement("p"); 
+  const itemElement = document.createElement("p");
   itemElement.innerText = value;
   listitemElement.appendChild(itemElement);
   listitemElement.classList.add("item"); // li class
@@ -32,7 +30,6 @@ function createButton(listitemElement) {
 
   const doneButton = document.createElement("button");
 
-  // doneButton.innerText = "🤍";
   if (listitemElement.classList.contains("completed")) {
     doneButton.innerText = "❤️";
   } else {
@@ -55,12 +52,12 @@ function saveListInformationLocal(value) {
     // to save highscore in the local storage
     localStorage.inputElement = JSON.stringify([]); // if local storage is undefined we want to store all the information in an empty array
 
-    // we take this , extract it ,, add sometging to the aaray and then put it back
+    // we take this , extract it , add sometging to the aaray and then put it back
   }
   if (localStorage.inputElement !== undefined) {
     let inputElementsArray = JSON.parse(localStorage.inputElement); ///  TO CONVERT TO OBJECT
     inputElementsArray.push(inputElement); // adds new value to array
-    localStorage.inputElement = JSON.stringify(inputElementsArray);
+    localStorage.inputElement = JSON.stringify(inputElementsArray); // put it  to local storage
   }
 }
 
@@ -94,14 +91,11 @@ function removeElement() {
 }
 
 function finishedTask() {
-  ///// there is problem with this
   const element = this; // Get the clicked button
   const listItem = element.parentNode;
   // listItem.classList.add("completed");
   console.log(listItem);
   listItem.classList.toggle("completed"); // Toggle the completed class on the li element
-
-  // Update the completed status in local storage
 
   // Update the button text
   if (listItem.classList.contains("completed")) {
@@ -116,20 +110,22 @@ function finishedTask() {
 
 function updateLocalStorage() {
   const listItems = document.getElementsByClassName("item");
-  let inputElementsArray = [];
+
+  localStorage.inputElement = JSON.stringify([]);
 
   for (let i = 0; i < listItems.length; i++) {
-    const item = listItems[i]; // div
+    const item = listItems[i];
     console.log(item);
-
-    console.log(item.classList.contains("completed"));
-    inputElementsArray.push({
+    let inputElement = {
       name: item.childNodes[0].innerText, // Retrieve the task name
       completed: item.classList.contains("completed"), // Check if task is completed
-    });
-  }
+    };
 
-  localStorage.setItem("inputElement", JSON.stringify(inputElementsArray));
+    console.log(item.classList.contains("completed"));
+    let inputElementsArray = JSON.parse(localStorage.inputElement);
+    inputElementsArray.push(inputElement);
+    localStorage.inputElement = JSON.stringify(inputElementsArray);
+  }
 }
 
 function onLoadHandler() {
@@ -140,4 +136,3 @@ function onLoadHandler() {
 }
 
 window.addEventListener("load", onLoadHandler);
-/// the error is that it is saving the buttons in localstorage and then fething it again for the value which are completed or removed
