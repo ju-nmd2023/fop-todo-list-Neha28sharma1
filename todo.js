@@ -14,7 +14,7 @@ function updateListitem(value) {
   const listElement = document.getElementById("list"); /// called ul
 
   const listitemElement = document.createElement("li"); // created li in ul
-  const itemElement = document.createElement("p"); // created li in ul
+  const itemElement = document.createElement("p"); 
   itemElement.innerText = value;
   listitemElement.appendChild(itemElement);
   listitemElement.classList.add("item"); // li class
