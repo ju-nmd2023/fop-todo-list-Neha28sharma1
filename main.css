@@ -1,7 +1,7 @@
 html,
 body {
-  margin: 15px;
-  font-family: Helvetica, Arial, sans-serif;
+  margin: 25px;
+  font-family: Helvetica;
   background-color: #4f4c4c;
 }
 
@@ -44,6 +44,8 @@ h1 {
   border: none;
   cursor: pointer;
   font-size: 20px;
+  text-align: left;
+  margin-left: 220px;
 }
 
 .done {
@@ -51,6 +53,8 @@ h1 {
   border: none;
   cursor: pointer;
   font-size: 20px;
+  text-align: left;
+  margin-left: 80px;
 }
 
 #list {
@@ -60,10 +64,6 @@ h1 {
   border: 2px solid #ccc;
 }
 
-.delete,
-.done {
-  margin-right: 20px; /* Adjust the margin as needed */
-}
 .item {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

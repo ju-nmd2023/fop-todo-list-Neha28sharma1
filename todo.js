@@ -11,7 +11,7 @@ function clickHandler() {
 function updateListitem(value) {
   const listElement = document.getElementById("list"); /// called ul
 
-  const listitemElement = document.createElement("li"); // created li in ul
+  const listitemElement = document.createElement("div"); // created li in ul
   const itemElement = document.createElement("p");
   itemElement.innerText = value;
   listitemElement.appendChild(itemElement);
@@ -69,8 +69,8 @@ function displayFromLocalstorage() {
     let inputElementsArray = JSON.parse(localStorage.inputElement);
 
     for (let inputelement of inputElementsArray) {
-      const listitemElement = document.createElement("li"); // created li in ul
-      const itemElement = document.createElement("p"); // created li in ul
+      const listitemElement = document.createElement("div"); // created li in ul
+      const itemElement = document.createElement("p");
       itemElement.innerText = inputelement.name;
       listitemElement.classList.add("item");
       if (inputelement.completed) {
