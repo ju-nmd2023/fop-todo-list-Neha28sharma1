@@ -1,11 +1,9 @@
 function clickHandler() {
   const inputElement = document.getElementById("enterText"); ///called input element
   const value = inputElement.value; //input element value
-  if (value !== "") {
-    updateListitem(value);
-    saveListInformationLocal(value);
-    inputElement.value = ""; // Clear input field after adding task
-  }
+  updateListitem(value);
+  saveListInformationLocal(value);
+  inputElement.value = ""; // Clear input field after adding task
 }
 
 function updateListitem(value) {
