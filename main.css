@@ -1,6 +1,5 @@
 html,
 body {
-  margin: 25px;
   font-family: Helvetica;
   background-color: #4f4c4c;
 }
@@ -39,33 +38,44 @@ h1 {
 
 .delete {
   color: #e87878;
-
+  width: 10%;
   background-color: transparent;
   border: none;
   cursor: pointer;
   font-size: 20px;
   text-align: left;
-  margin-left: 220px;
+  margin-left: auto;
 }
 
 .done {
   background-color: transparent;
+  width: 70%;
   border: none;
   cursor: pointer;
   font-size: 20px;
   text-align: left;
-  margin-left: 80px;
+  margin-left: auto;
 }
 
 #list {
   text-align: center;
   justify-content: center;
   background-color: grey;
-  border: 2px solid #ccc;
+  border: 2px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .item {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   text-align: justify;
+}
+@media only screen and (min-width: 400px) {
+  .done {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
