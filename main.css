@@ -29,7 +29,7 @@ body {
 
 h1 {
   text-align: center;
-  
+
   font-family: "Caveat";
   font-size: 50px;
   color: bisque;
@@ -72,7 +72,7 @@ h1 {
 
 .item {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 60% 1fr 1fr;
   text-align: justify;
 }
 @media only screen and (min-width: 400px) {
