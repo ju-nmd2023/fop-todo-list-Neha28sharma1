@@ -73,6 +73,7 @@ h1 {
 .item {
   display: grid;
   grid-template-columns: 60% 1fr 1fr;
+  /* grid */
   text-align: justify;
 }
 @media only screen and (min-width: 400px) {
