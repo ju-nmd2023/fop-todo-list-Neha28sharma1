@@ -113,13 +113,13 @@ function updateLocalStorage() {
 
   for (let i = 0; i < listItems.length; i++) {
     const item = listItems[i];
-    console.log(item);
+    // console.log(item);
     let inputElement = {
       name: item.childNodes[0].innerText, // Retrieve the task name
       completed: item.classList.contains("completed"), // Check if task is completed
     };
 
-    console.log(item.classList.contains("completed"));
+    // console.log(item.classList.contains("completed"));
     let inputElementsArray = JSON.parse(localStorage.inputElement);
     inputElementsArray.push(inputElement);
     localStorage.inputElement = JSON.stringify(inputElementsArray);
